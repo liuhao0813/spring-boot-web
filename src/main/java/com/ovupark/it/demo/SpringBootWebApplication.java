@@ -18,6 +18,8 @@ public class SpringBootWebApplication {
 		SpringApplication.run(SpringBootWebApplication.class, args);
 	}
 	
+	
+        
 	@Bean
     public SpringDataDialect springDataDialect() {
         return new SpringDataDialect();

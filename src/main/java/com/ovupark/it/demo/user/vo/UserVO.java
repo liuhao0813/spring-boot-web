@@ -12,7 +12,7 @@ public class UserVO extends BaseVO {
 	private String userId;
 	private String email;
 	private String userAccount;
-	private String password;
+	private String userPassword;
 	private String loginToken;
 	
 	public String getLname() {
@@ -39,17 +39,17 @@ public class UserVO extends BaseVO {
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getLoginToken() {
 		return loginToken;
 	}
 	public void setLoginToken(String loginToken) {
 		this.loginToken = loginToken;
+	}
+	public String getUserPassword() {
+		return userPassword;
+	}
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
 	}
 	
 	
