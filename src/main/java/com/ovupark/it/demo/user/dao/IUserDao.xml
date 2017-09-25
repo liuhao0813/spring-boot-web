@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ovupark.it.demo.user.dao.IUserDao">
+	
+	<select id="findAllUser" resultType="com.ovupark.it.demo.user.vo.UserVO">
+		SELECT 
+		    t.lname,
+		    t.user_id AS userId,
+		    t.email,
+		    t.emp_number AS empNumber,
+		    t.user_account AS userAccount,
+		    t.user_password AS userPassword,
+		    t.login_token AS loginToken,
+		    t.created_by AS createdBy,
+		    t.creation_date AS creationDate,
+		    t.last_updated_by AS lastUpdatedBy,
+		    t.last_update_date AS lastUpdateDate
+		FROM
+		    tpl_user_t t
+	</select>
+	
+	<insert id="createUser">
+		insert into tpl_user_t(
+		    lname,
+			user_id,
+			email,
+			emp_number,
+			user_account,
+			user_password,
+			login_token,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date
+		    ) values(
+		    #{lname,jdbcType=VARCHAR},
+		    #{userId,jdbcType=DOUBLE},
+		    #{email,jdbcType=VARCHAR},
+		    #{empNumber,jdbcType=VARCHAR},
+		    #{userAccount,jdbcType=VARCHAR},
+		    password(#{userPassword,jdbcType=VARCHAR}),
+		    #{lname,jdbcType=VARCHAR},
+		    #{userId,jdbcType=DOUBLE},
+		    curdate(),
+		    #{userId,jdbcType=DOUBLE},
+		    curdate()
+		    )
+	</insert>
+</mapper>
