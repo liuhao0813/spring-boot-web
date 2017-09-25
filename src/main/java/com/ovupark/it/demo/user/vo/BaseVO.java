@@ -3,14 +3,14 @@ package com.ovupark.it.demo.user.vo;
 import java.util.Date;
 
 public abstract class BaseVO {
-	private Long createdBy;
+	private String createdBy;
 	private Date creationDate;
-	private Long lastUpdatedBy;
+	private String lastUpdatedBy;
 	private Date lastUpdateDate;
-	public Long getCreatedBy() {
+	public String getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(Long createdBy) {
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 	public Date getCreationDate() {
@@ -19,10 +19,10 @@ public abstract class BaseVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	public Long getLastUpdatedBy() {
+	public String getLastUpdatedBy() {
 		return lastUpdatedBy;
 	}
-	public void setLastUpdatedBy(Long lastUpdatedBy) {
+	public void setLastUpdatedBy(String lastUpdatedBy) {
 		this.lastUpdatedBy = lastUpdatedBy;
 	}
 	public Date getLastUpdateDate() {

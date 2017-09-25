@@ -4,12 +4,10 @@
 	
 	<select id="findAllUser" resultType="com.ovupark.it.demo.user.vo.UserVO">
 		SELECT 
-		    t.lname,
 		    t.user_id AS userId,
 		    t.email,
-		    t.emp_number AS empNumber,
-		    t.user_account AS userAccount,
-		    t.user_password AS userPassword,
+		    t.username AS username,
+		    t.password AS password,
 		    t.login_token AS loginToken,
 		    t.created_by AS createdBy,
 		    t.creation_date AS creationDate,
@@ -21,28 +19,22 @@
 	
 	<insert id="createUser">
 		insert into tpl_user_t(
-		    lname,
-			user_id,
 			email,
-			emp_number,
-			user_account,
-			user_password,
+			username,
+			password,
 			login_token,
 			created_by,
 			creation_date,
 			last_updated_by,
 			last_update_date
 		    ) values(
-		    #{lname,jdbcType=VARCHAR},
-		    #{userId,jdbcType=DOUBLE},
 		    #{email,jdbcType=VARCHAR},
-		    #{empNumber,jdbcType=VARCHAR},
-		    #{userAccount,jdbcType=VARCHAR},
-		    password(#{userPassword,jdbcType=VARCHAR}),
-		    #{lname,jdbcType=VARCHAR},
-		    #{userId,jdbcType=DOUBLE},
+		    #{username,jdbcType=VARCHAR},
+		    #{password,jdbcType=VARCHAR},
+		    #{loginToken,jdbcType=VARCHAR},
+		    'System',
 		    curdate(),
-		    #{userId,jdbcType=DOUBLE},
+		    'System',
 		    curdate()
 		    )
 	</insert>

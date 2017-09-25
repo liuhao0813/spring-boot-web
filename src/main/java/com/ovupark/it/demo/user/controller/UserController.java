@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.SortDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,10 +40,10 @@ public class UserController {
 		return "user/add_user";
 	}
 	
-	@PostMapping("/save")
-	public String saveUser(UserVO userVO) {
+	@PostMapping("/register")
+	public String saveUser(@ModelAttribute UserVO userVO) {
 		userServiceImpl.createUser(userVO);
-		return "redirect:list";
+		return "index";
 	}
 	
 }

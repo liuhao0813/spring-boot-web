@@ -54,7 +54,7 @@
 						<form data-th-action="@{/user/register}" method="post">
 							<h1>Create Account</h1>
 							<div>
-								<input type="text" class="form-control" name="userAccount" placeholder="Username" />
+								<input type="text" class="form-control" name="username" placeholder="Username" />
 							</div>
 							<div>
 								<input type="email" class="form-control" placeholder="Email"
@@ -62,10 +62,11 @@
 							</div>
 							<div>
 								<input type="password" class="form-control"
-									placeholder="Password" name="userPassword" />
+									placeholder="Password" name="password" />
 							</div>
 							<div>
-								<a class="btn btn-default submit" href="index.html">Submit</a>
+								<input type="submit" class="btn btn-default submit" value="Submit">
+								<!-- <a class="btn btn-default submit" href="index.html" data-th-href="@{/user/register}">Submit</a> -->
 							</div>
 
 							<div class="clearfix"></div>
