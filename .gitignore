@@ -23,6 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+bin/
 
 ##多余的文件
 mvnw
