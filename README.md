@@ -17,5 +17,21 @@ CREATE TABLE `sso`.`tpl_user_t` (
   PRIMARY KEY (`user_id`))
 COMMENT = '用户表';
 
+2.批量添加数据，为了更好的进行分页功能的测试
+delimiter $$ 
+DROP PROCEDURE IF EXISTS `myproc`$$  
+create procedure myproc()
+begin  
+declare num int;
+set num = 101;
+while num<200 do  
+    insert into tpl_user_t (user_id,email,username,password,login_token,created_by,creation_date,last_updated_by,last_update_date)  
+values  
+    (num, concat('hello','@qq.com'),concat('hello', num), '1','',12,now(),12,now());
+    
+set num = num + 1;
+end while;
+  
+end$$
 
 
