@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ovupark.it.demo.user.service.IUserService;
 import com.ovupark.it.demo.user.vo.UserVO;
 
@@ -29,8 +31,11 @@ public class UserController {
 	@GetMapping("/list-user")
 	public String findAllUser(HttpServletRequest request, @SortDefault("username") Pageable pageable){
 		
+		PageHelper.startPage(2, 10);
 		List<UserVO> listUser = userServiceImpl.findAllUser(pageable);
-		request.setAttribute("users", listUser);
+		PageInfo<UserVO> pageInfo = new PageInfo<UserVO>(listUser);
+		System.out.println(pageInfo.getTotal()+"===="+pageInfo.getPageNum());
+		request.setAttribute("users", pageInfo.getList());
 		
 		return "user/list-user";
 	}
