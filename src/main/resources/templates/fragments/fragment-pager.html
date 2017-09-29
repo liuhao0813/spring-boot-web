@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+<ol class="page-navigator" data-th-fragment="pageNav(pageInfo, prevText, nextText, prefix)">
+    <data-th-block data-th-if="${pageInfo.hasPreviousPage}">
+        <li class="prev"><a data-th-href="@{'/'+${prefix}+'/'+${pageInfo.prePage}}" data-th-text="${prevText}"></a></li>
+    </data-th-block>
+
+
+    <data-th-block data-th-each="navIndex :${ pageInfo.navigatepageNums}">
+        <li data-th-class="${pageInfo.pageNum==navIndex}?'current':''"><a data-th-href="@{'/page/'+${navIndex}}"
+                                                                     data-th-text="${navIndex}"></a></li>
+    </data-th-block>
+
+
+    <data-th-block data-th-if="${pageInfo.hasNextPage}">
+        <li class="next"><a data-th-href="@{'/'+${prefix}+'/'+${pageInfo.nextPage}}" data-th-text="${nextText}"></a></li>
+    </data-th-block>
+
+</ol>
+
+	<nav class="pull-right" aria-label="Page navigation" data-th-fragment="page-admin-nav(pageInfo)">
+		<ul class="pagination">
+			<li data-th-if="${pageInfo.hasPreviousPage}">
+			      <a data-th-href="@{'?page='+${pageInfo.prePage}}" aria-label="Previous">&laquo;上一页 </a>
+			</li>
+			<li data-th-class="${nav==pageInfo.pageNum}?'active':''" data-th-each="nav : ${pageInfo.navigatepageNums}">
+			     <a data-th-href="@{'?page='+${nav}}" data-th-text="${nav}"></a>
+			</li>
+			
+			<li data-th-if="${pageInfo.hasNextPage}">
+			      <a data-th-href="@{'?page='+${pageInfo.nextPage}}" aria-label="Next">下一页&raquo;</a>
+			</li>
+				
+			<li><span data-th-text="'共'+${pageInfo.pages}+'页'"></span></li>
+		</ul>
+	</nav>
+
+	<!-- 
+<div data-th-fragment="page-admin-nav(pageInfo)">
+    <div class="clearfix">
+        <ul class="pagination m-b-5 pull-right">
+            <li data-th-if="${pageInfo.hasPreviousPage}">
+                <a data-th-href="@{page=${pageInfo.prePage}}" aria-label="Previous">
+                    <i class="fa fa-angle-left"></i>&nbsp;上一页
+                </a>
+            </li>
+
+            <data-th-block data-th-each="nav : ${pageInfo.navigatepageNums}">
+                <li class="paginate_button" data-th-class="${nav==pageInfo.pageNum}?'active':''"><a data-th-href="@{'?page='+${nav}}" data-th-text="${nav}"></a>
+                </li>
+            </data-th-block>
+
+            <data-th-block data-th-if="${pageInfo.hasNextPage}">
+                <li>
+                    <a data-th-href="@{'?page='+${pageInfo.nextPage}}" aria-label="Next">
+                        下一页&nbsp;<i class="fa fa-angle-right"></i>
+                    </a>
+                </li>
+            </data-th-block>
+
+            <li><span data-th-text="'共'+${pageInfo.pages}+'页'"></span></li>
+        </ul>
+    </div>
+</div> -->
+
+</body>
+</html>

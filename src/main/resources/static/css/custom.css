@@ -286,7 +286,7 @@ html , body{
     margin: 0;
     font-weight: 300
 }
-.profile.img_2 {
+.profile.img_2,.center {
     text-align: center
 }
 .profile.img_2 .profile_pic {

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ovupark.it.demo.user.dao.IUserDao;
 import com.ovupark.it.demo.user.service.IUserService;
 import com.ovupark.it.demo.user.vo.UserVO;
@@ -16,8 +18,11 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private IUserDao userDao;
 
-	public List<UserVO> findAllUser(Pageable pageable) {
-		return userDao.findAllUser(pageable);
+	public PageInfo<UserVO> findAllUser(Pageable pageable) {
+		PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
+		List<UserVO> listUser = userDao.findAllUser(pageable);
+		PageInfo<UserVO> pageInfo = new PageInfo<UserVO>(listUser);
+		return pageInfo;
 	}
 
 	@Override
